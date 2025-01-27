@@ -13,51 +13,63 @@ function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        
-        
-        setSubmitted(true); 
-        setFormData({ name: '', email: '', message: '' }); 
+
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
     };
 
     return (
         <div className="contact-page">
             <h1>Contact Me</h1>
             <p>If you're interested in my work, feel free to reach out!</p>
-            
-            {submitted && <p className="success-message" style={{color:'green'}}>Thank you! Your message has been sent.</p>}
-            
-            <form className="contact-form" onSubmit={handleSubmit}>
-                <label>
-                    Name:
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <label>
-                    Email:
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <label>
-                    Message:
-                    <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <button type="submit">Send Message</button>
-            </form>
+
+
+            {submitted && (
+
+                <p className="success-message" style={{ color: 'green', fontSize: '27px', marginBottom: '200px', marginTop: '150px' }}>
+                    Thank you! Your message has been sent.
+                </p>
+
+            )}
+
+
+            {!submitted &&
+
+                <form className="contact-form" onSubmit={handleSubmit}>
+                    <label>
+                        Name:
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Email:
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Message:
+                        <textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                    <button type="submit">Send Message</button>
+                </form>
+
+            }
+
         </div>
     );
 }
